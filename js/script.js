@@ -57,7 +57,7 @@ while(!hasWon && !selectedMines){
     userChoice = parseInt(prompt("Inserisci un numero da " + MIN_OPTION + " a " + MAX_OPTION));
     step++
     if(userChoice > MAX_OPTION){
-      alert("Sei stupido? PUOI INSERIRE MASSIMO NUMERI FINO A " + MAX_OPTION)
+      alert("Sei stupido? PUOI INSERIRE UN MASSIMO DI NUMERI FINO A " + MAX_OPTION)
     }else if(userChoice < MIN_OPTION){
       alert("Imbecille non puoi andare in negativo!");
     }else{
