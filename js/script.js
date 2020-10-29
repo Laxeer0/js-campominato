@@ -18,7 +18,7 @@ while (mines.length < MAX_MINES){
   }
 }
 //Se vuoi barare attiva, ricorda che sarai una persona cattiva
-console.log(mines);
+//console.log(mines);
 
 //USER selection
 var userChoice = "";
@@ -49,4 +49,3 @@ if(hasWon){
   alert("Sei fortissimo, perchè non ti giochi i numeri al superenalotto?")
   alert("Hai vinto con un punteggio di " + userAlreadyChoices.length + " punti ed hai effettuato " + step + " mosse.")
 }
-console.log(userAlreadyChoices);
