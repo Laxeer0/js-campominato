@@ -27,6 +27,7 @@ var hasWon = false;
 var selectedMines = false;
 var step = 0;
 
+//USER selection with prompt
 while(!hasWon && !selectedMines){
   if(userAlreadyChoices.length == ROUNDS){
     hasWon = true;
