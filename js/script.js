@@ -1,5 +1,5 @@
 //GAME Proprieties
-var ROUNDS = 5;
+var ROUNDS = 100;
 var MIN_OPTION = 1;
 var MAX_OPTION = 100;
 
