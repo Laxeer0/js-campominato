@@ -1,5 +1,5 @@
 document.getElementById("startbtn").addEventListener("click", function(){
-  
+
 //GAME Proprieties
 var ROUNDS = 100;
 var MIN_OPTION = 1;
@@ -12,6 +12,7 @@ var MIN_NMINES = 1;
 var MAX_NMINES = 100;
 var mines = [];
 var tmp_mines = 0;
+var errorAttempt = 3;
 
 var selDiffHTML = parseInt(document.getElementById("selectDiff").value);
 
@@ -41,7 +42,7 @@ while (mines.length < MAX_MINES){
   }
 }
 //Se vuoi barare attiva, ricorda che sarai una persona cattiva
-//console.log(mines);
+console.log(mines);
 
 //USER selection
 var userChoice = "";
@@ -49,7 +50,7 @@ var userAlreadyChoices = [];
 var hasWon = false;
 var selectedMines = false;
 var step = 0;
-
+/*
 //USER selection with prompt
 while(!hasWon && !selectedMines){
   if(userAlreadyChoices.length == ROUNDS){
@@ -74,9 +75,59 @@ while(!hasWon && !selectedMines){
     }
   }
 }
-
+*/
 if(hasWon){
   alert("Sei fortissimo, perchè non ti giochi i numeri al superenalotto?")
   alert("Hai vinto con un punteggio di " + userAlreadyChoices.length + " punti ed hai effettuato " + step + " mosse.")
 }
+
+//GUI
+var bossBox = document.getElementById("boss-box");
+for(var i = 1; i < MAX_OPTION + 1; i++){
+  bossBox.innerHTML += '<div class="p-2 bd-highlight flex-control-custom"><button id="btnBox" class="btn btn-box btnBox" >'+i+'</button></div>';
+
+}
+
+
+
+
+document.querySelectorAll('.btnBox').forEach(item => {
+  item.addEventListener('click', event => {
+    userChoice = parseInt(item.innerText)
+    console.log(userChoice);
+    step++
+    if(userChoice > MAX_OPTION){
+      alert("Sei stupido? PUOI INSERIRE UN MASSIMO DI NUMERI FINO A " + MAX_OPTION)
+    }else if(userChoice < MIN_OPTION){
+      alert("Imbecille non puoi andare in negativo!");
+    }else{
+      if(!checkArray(userChoice,userAlreadyChoices)){
+        if(checkArray(userChoice,mines)){
+          errorAttempt--
+          if(errorAttempt === 0){
+            selectedMines = true;
+            alert("Hai finito i tentativi, riprova!");
+            item.classList.add("bg-err");
+            document.querySelectorAll('.btnBox').forEach(item => {item.setAttribute("disabled","true")});
+          }else{
+            alert("Mina presa, sei una pippa! Ti rimangono " + errorAttempt + " tentativi");
+            item.classList.add("bg-err");
+          }
+        }else{
+        userAlreadyChoices.push(userChoice);
+        item.classList.add("bg-succ");
+        if(userAlreadyChoices.length == MAX_OPTION){
+          alert("Hai vinto broski");
+        }
+      }
+    }else{
+        alert("Numero già inserito, riprova");
+      }
+    }
+
+
+  })
+})
+
+
 });

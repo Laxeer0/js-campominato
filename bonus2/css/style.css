@@ -1,0 +1,19 @@
+.btn-box{
+  background-color:gray;
+  padding:15px;
+}
+
+.flex-control-custom{
+  flex: 0 0 10%;
+}
+.flex-control-custom > button{
+font-size: 0px;
+}
+
+.bg-succ{
+  background-color: green;
+}
+
+.bg-err{
+  background-color: red;
+}
