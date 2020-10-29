@@ -56,14 +56,20 @@ while(!hasWon && !selectedMines){
   }else{
     userChoice = parseInt(prompt("Inserisci un numero da " + MIN_OPTION + " a " + MAX_OPTION));
     step++
-    if(!checkArray(userChoice,userAlreadyChoices)){
-      if(checkArray(userChoice,mines)){
-        alert("Mina presa, sei una pippa!")
-        selectedMines = true;
-      }
-      userAlreadyChoices.push(userChoice);
+    if(userChoice > MAX_OPTION){
+      alert("Sei stupido? PUOI INSERIRE MASSIMO NUMERI FINO A " + MAX_OPTION)
+    }else if(userChoice < MIN_OPTION){
+      alert("Imbecille non puoi andare in negativo!");
     }else{
-      alert("Numero già inserito, riprova");
+      if(!checkArray(userChoice,userAlreadyChoices)){
+        if(checkArray(userChoice,mines)){
+          alert("Mina presa, sei una pippa!")
+          selectedMines = true;
+        }
+        userAlreadyChoices.push(userChoice);
+      }else{
+        alert("Numero già inserito, riprova");
+      }
     }
   }
 }
