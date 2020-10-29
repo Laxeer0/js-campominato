@@ -1,7 +1,9 @@
+document.getElementById("startbtn").addEventListener("click", function(){
 //GAME Proprieties
 var ROUNDS = 100;
 var MIN_OPTION = 1;
 var MAX_OPTION = 100;
+
 
 //MINES Settings
 var MAX_MINES = 16;
@@ -9,6 +11,26 @@ var MIN_NMINES = 1;
 var MAX_NMINES = 100;
 var mines = [];
 var tmp_mines = 0;
+
+var selDiffHTML = parseInt(document.getElementById("selectDiff").value);
+
+console.log(selDiffHTML)
+switch(selDiffHTML) {
+  case 1:
+    MAX_NMINES = 100;
+    MAX_OPTION = 100;
+    break;
+  case 2:
+    MAX_NMINES = 80;
+    MAX_OPTION = 80;
+    break;
+  case 3:
+    MAX_NMINES = 50;
+    MAX_OPTION = 50;
+    break;
+}
+
+
 
 //MINES generator
 while (mines.length < MAX_MINES){
@@ -50,3 +72,4 @@ if(hasWon){
   alert("Sei fortissimo, perchè non ti giochi i numeri al superenalotto?")
   alert("Hai vinto con un punteggio di " + userAlreadyChoices.length + " punti ed hai effettuato " + step + " mosse.")
 }
+});
